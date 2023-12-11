@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: gateway-service
+#  cache:
+#    type: redis
+#  redis:
+#    host: localhost
+#    port: 6379
+#    password:
+  cloud:
+    gateway:
+      routes:
+        - id : auth-server
+          predicates:
+            - Path=/auth/login/
+          uri: localhost:2210
+          metadata:
+            response-timeout: 1000
+            connect-timeout: 1000
+#          filters:
+#            - name: CustomOAuth2AuthorizationFilter
+#              args:
+#                authorities:
+#                  #    User Controller
+#                  api/oauth/user/v5/manage/account: ROLE_admin
+#            - name: CircuitBreaker
+#              args:
+#                name: OAUTH-CIRCUIT-BREAKER
+#                fallbackuri: forward:/fallback
+  main:
+    web-application-type: reactive
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:password@localhost:8761/eureka
+
+logging:
+  level:
+    org.springframework.web.HttpLogging: TRACE
+    reactor.netty.http.server: DEBUG
+    reactor.netty.http.client: DEBUG
+
+jwt: # Store token in a Volute
+  secret: 04ca023b39512e46d0c2cf4b48d5aac61d34302994c87ed4eff225dcf3b0a218739f3897051a057f9b846a69ea2927a587044164b7bae5e1306219d50b588cb1
+
+server:
+  port: 8085
+
+authentication:
+  enabled: false

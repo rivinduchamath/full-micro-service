@@ -1,0 +1,44 @@
+#management:
+#  endpoints:
+#    restart:
+#      enabled: true
+#    web:
+#      exposure:
+#        include: "*"
+#
+#resilience4j.circuitbreaker:
+#  configs:
+#    default:
+#      slidingWindowSize: 100
+#      permittedNumberOfCallsInHalfOpenState: 5
+#      waitDurationInOpenState: 10000
+#      failureRateThreshold: 60
+#      eventConsumerBufferSize: 10
+#      registerHealthIndicator: true
+#      record-exceptions:
+#        - java.lang.Exception
+#  instances:
+#    loginCircuitBreaker:
+#      baseConfig: default
+#      waitDurationInOpenState: 5000
+#    registerCircuitBreaker:
+#      baseConfig: default
+#      waitDurationInOpenState: 5000
+#
+#spring:
+#  main:
+#    banner-mode: off
+#  application:
+#    name: gateway-service
+#  cloud:
+#    kubernetes:
+#      config:
+#        enabled: true
+#        name: gateway-service
+#        namespace: cog-qa
+#      reload:
+#        enabled: true
+#        mode: polling
+#        strategy: refresh
+#
+#
