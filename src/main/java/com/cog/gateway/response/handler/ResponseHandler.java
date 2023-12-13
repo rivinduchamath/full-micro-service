@@ -1,13 +1,14 @@
-package com.cog.gateway.controller;
+package com.cog.gateway.response.handler;
 
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ResponseHandler {
+
+    private ResponseHandler() {}
 
     public static ResponseEntity<Object> responseBuilder(String message, String customCode, HttpStatus httpStatus, Object responseObject) {
         return getObjectResponseEntity(message, customCode, httpStatus, responseObject);

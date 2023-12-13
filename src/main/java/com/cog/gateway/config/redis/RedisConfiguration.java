@@ -1,4 +1,4 @@
-package com.cog.gateway.config;
+package com.cog.gateway.config.redis;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
